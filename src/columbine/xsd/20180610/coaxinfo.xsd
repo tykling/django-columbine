@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!-- ======== coaxinfoType ======== -->
+  <xsd:complexType name="coaxinfoType">
+    <xsd:annotation>
+      <xsd:documentation>
+       The coaxinfo definition.
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:all>
+      <xsd:element name="anlaegs-navn"      type="anlaegsNavnType"     minOccurs="0"/>
+      <xsd:element name="anlaegs-nr"        type="anlaegsNrType"       minOccurs="0"/>
+      <xsd:element name="cmts-navn"         type="cmtsNavnType"        minOccurs="0"/>
+      <xsd:element name="instal-sequens-nr" type="instalSequensNrType" minOccurs="0"/>
+      <xsd:element name="instal-state"      type="instalStateType"     minOccurs="0"/>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:simpleType name="anlaegsNavnType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="100"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="anlaegsNrType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="10"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="cmtsNavnType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="40"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="instalSequensNrType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="10"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="instalStateType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

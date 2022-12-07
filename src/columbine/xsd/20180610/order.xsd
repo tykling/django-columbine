@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Cobi (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- Order type -->
+	<xsd:include schemaLocation="types.xsd"/>
+	<xsd:include schemaLocation="customerrelation.xsd"/>
+	<xsd:include schemaLocation="customer.xsd"/>
+	<xsd:include schemaLocation="installation.xsd"/>
+	<xsd:include schemaLocation="tasklist.xsd"/>
+	<xsd:include schemaLocation="installation.xsd"/>
+	<xsd:include schemaLocation="worktimeslotlist.xsd"/>
+	<xsd:include schemaLocation="productchangelist.xsd"/>
+	<xsd:include schemaLocation="announcement.xsd"/>
+	<xsd:complexType name="orderType">
+		<xsd:annotation>
+			<xsd:documentation>
+             20061215: order vil indeholde enten requested-date-special, execution-date-special
+             eller requested-date, requested-time, execution-date, execution-time-from og execution-time-to
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="order-type" type="orderTypeType" minOccurs="0"/>
+			<xsd:element name="order-date" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="order-status" type="orderStatusType" minOccurs="0"/>
+			<xsd:element name="order-no" type="orderNoType" minOccurs="0"/>
+			<xsd:element name="phone-no" type="phoneNoType" minOccurs="0"/>
+			<xsd:element name="contact-name" type="contactNameType" minOccurs="0"/>
+			<xsd:element name="contact-phone-no" type="contactPhoneNoType" minOccurs="0"/>
+			<xsd:element name="remarks" type="orderRemarksType" minOccurs="0"/>
+			<xsd:element name="confirm-letter" type="confirmLetterType" default="false" minOccurs="0"/>
+			<xsd:element name="order-reference" type="orderReferenceType" minOccurs="0"/>
+			<xsd:element name="reserved-phone-no" type="reservedPhoneNoType" minOccurs="0"/>
+			<xsd:element name="request-start-limit-date" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="request-end-limit-date" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="requested-date-special" type="specialType" minOccurs="0"/>
+			<xsd:element name="requested-date" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="requested-time" type="xsd:time" minOccurs="0"/>
+			<xsd:element name="book-exact-date" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="execution-date-special" type="specialType" minOccurs="0"/>
+			<xsd:element name="execution-date" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="execution-time-from" type="xsd:time" minOccurs="0"/>
+			<xsd:element name="execution-time-to" type="xsd:time" minOccurs="0"/>
+			<xsd:element name="compute-date" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="timeslot-type" type="timeslotType" minOccurs="0"/>
+			<xsd:element name="day-shortname" type="dayShortnameType" minOccurs="0"/>
+			<xsd:element name="booking-message" type="bookingMessageType" minOccurs="0"/>
+			<xsd:element name="important-message" type="importantMessageType" minOccurs="0"/>
+			<xsd:element name="installation" type="installationType" minOccurs="0"/>
+			<xsd:element name="forwarding-address" type="installationType" minOccurs="0"/>
+			<xsd:element name="announcement" type="announcementType" minOccurs="0"/>
+			<xsd:element name="product-change-list" type="productChangeListType" minOccurs="0"/>
+			<xsd:element name="customer-relation" type="customerRelationType" minOccurs="0"/>
+			<xsd:element name="task-list" type="taskListType" minOccurs="0"/>
+			<xsd:element name="work-timeslot-list" type="worktimeslotListType" minOccurs="0"/>
+            <xsd:element name="copper-blocking-text" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="rejection-causes-list" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="rejection-causes" type="rejectionCauseType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="orderTypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="35"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="orderStatusType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="started"/>
+			<xsd:enumeration value="ordered"/>
+			<xsd:enumeration value="executed"/>
+			<xsd:enumeration value="invoiced"/>
+			<xsd:enumeration value="cancelled"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- orderNoType -->
+	<xsd:simpleType name="orderNoType">
+		<xsd:annotation>
+			<xsd:documentation>
+             Type def. for the order number
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="9"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="contactNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="70"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="orderReferenceType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="contactPhoneNoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="orderRemarksType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="45"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="confirmLetterType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="true"/>
+			<xsd:enumeration value="false"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="reservedPhoneNoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="specialType">
+		<xsd:annotation>
+			<xsd:documentation>
+             Mulige specialTyper er: Uge format: U5506 / U552006, Nærmere Måned eks: NM032016, Nærmere Uge eks: NU052016
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="5"/>
+			<xsd:maxLength value="7"/>
+			<xsd:pattern value="[uU][0-5][0-9][0-9][0-9]|[pP][aA][pP][sS][aA][gG]|[uU][0-5][0-9]20[0-9][0-9]|[nN][mMuU][0-5][0-9]20[0-9][0-9]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="timeslotType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="dayShortnameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="MAN"/>
+			<xsd:enumeration value="TIR"/>
+			<xsd:enumeration value="ONS"/>
+			<xsd:enumeration value="TOR"/>
+			<xsd:enumeration value="FRE"/>
+			<xsd:enumeration value="LØR"/>
+			<xsd:enumeration value="SØN"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="bookingMessageType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="importantMessageType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="rejectionCauseType">
+		<xsd:annotation>
+			<xsd:documentation>
+             The rejection cause definition.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:all minOccurs="0">
+			<xsd:element name="rejection-cause-code" type="rejectioncauseCodeType" minOccurs="0"/>
+			<xsd:element name="rejection-cause-text" type="rejectioncauseTextType" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+	<!-- These are defined separately to allow for different regexps -->
+	<xsd:simpleType name="rejectioncauseCodeType">
+		<xsd:annotation>
+			<xsd:documentation>
+             The rejectioncauseCode type max 4 chars and text
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="rejectioncauseTextType">
+		<xsd:annotation>
+			<xsd:documentation>
+             The rejectioncauseText type max 35 chars and text
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="35"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

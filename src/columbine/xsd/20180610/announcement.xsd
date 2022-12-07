@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Lisbeth Cappelen (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+      -->
+	<xsd:include schemaLocation="address.xsd"/>
+	<!-- ======== announcementType ======== -->
+	<xsd:complexType name="announcementType">
+		<xsd:annotation>
+			<xsd:documentation>
+             Henvisning i forbindelse med opsigelser.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="announcement-type" type="announcementTypeType"/>
+			<xsd:element name="announcement-choice" type="announcementChoiceType" minOccurs="0"/>
+			<xsd:element name="announcement-phone-no" type="announcementPhoneNoType" minOccurs="0"/>
+			<xsd:element name="language-danish-priority" type="languagePriorityType" minOccurs="0"/>
+			<xsd:element name="language-english-priority" type="languagePriorityType"/>
+			<xsd:element name="language-german-priority" type="languagePriorityType" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="announcementTypeType">
+		<xsd:annotation>
+			<xsd:documentation>henvisnings-type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="standard"/>
+			<xsd:enumeration value="cancel"/>
+			<xsd:enumeration value="change"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="announcementChoiceType">
+		<xsd:annotation>
+			<xsd:documentation>henvisning-valg</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="numberchange"/>
+			<xsd:enumeration value="reference"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="announcementPhoneNoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="languagePriorityType">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

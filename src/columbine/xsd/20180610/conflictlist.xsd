@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+   -->
+  <xsd:include schemaLocation="product.xsd"/>
+  
+  <!-- Task list type -->
+  <xsd:complexType name="conflictType">
+    <xsd:annotation>
+      <xsd:documentation>5.13.7</xsd:documentation>
+    </xsd:annotation>
+<!-- <xsd:all>
+	    <xsd:element name="product-id" type="productIdType" minOccurs="0"/> -->
+    	<xsd:sequence>
+      		<xsd:element name="conflict-pair" minOccurs="0">
+       	 		<xsd:complexType>
+          			<xsd:sequence>
+            			<xsd:element name="product-id" type="productIdType" maxOccurs="2"/>
+          			</xsd:sequence>
+        		</xsd:complexType>
+      		</xsd:element>
+    	</xsd:sequence>
+<!-- </xsd:all> -->
+    </xsd:complexType>
+
+</xsd:schema>

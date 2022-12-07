@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 4, Installed Multi for 5 (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- **COPYRIGHT** Peter R. Brinkler TDCInternet **COPYRIGHT** -->
+	<xsd:include schemaLocation="cbsystem.xsd"/>
+	<xsd:include schemaLocation="types.xsd"/>
+	<xsd:include schemaLocation="parameterlist.xsd"/>
+	<xsd:element name="command">
+		<xsd:complexType>
+			<xsd:annotation>
+				<xsd:documentation>The main command element</xsd:documentation>
+			</xsd:annotation>
+			<xsd:all>
+				<xsd:element name="cb-system" type="cbSystemType"/>
+				<xsd:element name="name" type="XactionNameType"/>
+				<xsd:element name="order" type="orderType" minOccurs="0"/>
+				<xsd:element name="parameter-list" type="parameterListType"/>
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

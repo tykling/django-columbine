@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+  -->
+  <!-- productConfigListType -->
+  <xsd:complexType name="productConfigListType">
+    <xsd:annotation>
+      <xsd:documentation>
+        5.13.3
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="product-config" minOccurs="1">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="product-id" type="productIdType" minOccurs="1"/>
+            <xsd:element name="product-count" type="productCountConfigType" minOccurs="1"/>
+            <xsd:element name="config-parameter-list" type="configParameterListType"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- config parameter list -->
+  <xsd:complexType name="configParameterListType">
+    <xsd:annotation>
+      <xsd:documentation>
+        5.13.4
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="config-parameter">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="name" type="configParameterNameType" minOccurs="1"/>
+            <xsd:element name="param-value" type="configParameterValueType" minOccurs="1"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="productCountConfigType">
+    <xsd:restriction base="xsd:integer">
+      <xsd:totalDigits value="1"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="configParameterNameType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="255"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="configParameterValueType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="255"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

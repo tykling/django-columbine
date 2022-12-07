@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Ib Gregersen TCS Aps  -->
+	<!-- ======== BroadbandManagerParameters ======== -->
+	<!-- See the DTD from IHTsoa or examples from wholesale for further details regarding input rules and output layout -->
+	<xsd:include schemaLocation="types.xsd"/>
+	<xsd:complexType name="broadbandManagerParametersType">
+		<xsd:annotation>
+			<xsd:documentation>The input-parameters used for calls to IHTsoa/DSLMan system.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="dtd-name" type="dtdNameType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The name of the dtd to use in IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="operation" type="operationType">
+				<xsd:annotation>
+					<xsd:documentation>The operation to be executed in IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="phone-no" type="phoneNoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Phone-no/lid that identifies the broadband in Columbine and IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="logical-poi" type="logicalPoiType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Logical-poi (TX-number)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="sik-value" type="sikValueType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Sik-value that identifies the broadband in Columbine and IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="circuit-id" type="circuitIdType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Circuit id that indentifies a VPN tunnel</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="dslam-name" type="dslamNameType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Dslam name for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="port" type="portType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Port number for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="range" type="rangeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Range for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="test-speed" type="testSpeedType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Test-speed swich for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="multicast" type="multicastType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Multicast swich for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ts-up-speed" type="tsUpSpeedType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Ts up speed for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ts-down-speed" type="tsDownSpeedType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Ts down speed for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="flexible" type="flexibleType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Flexible swich for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="channel-id" type="channelIdType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>channel-id(as SIK no.) for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="stream" type="streamType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>stream for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="store" type="storeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>store for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="start-date" type="startDateType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>start-date for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="end-date" type="endDateType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>end-date for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="channel-speed-up" type="channelSpeedUpType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>channel-speed-up for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="channel-speed-down" type="channelSpeedDownType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>channel-speed-down for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="technical-profile" type="technicalProfileType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>technical-profile for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
+	<!-- These are defined separately to allow for different regexps -->
+	<xsd:simpleType name="dtdNameType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="operationType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="logicalPoiType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="dslamNameType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="circuitIdType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="portType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="rangeType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="testSpeedType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="multicastType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsUpSpeedType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="tsDownSpeedType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="flexibleType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="channelIdType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="streamType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="storeType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="startDateType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="endDateType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="channelSpeedUpType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+       <xsd:simpleType name="channelSpeedDownType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+       <xsd:simpleType name="technicalProfileType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+</xsd:schema>

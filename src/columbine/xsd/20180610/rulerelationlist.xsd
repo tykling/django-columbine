@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+  -->
+	<xsd:include schemaLocation="productgrouplist.xsd"/>
+	<xsd:include schemaLocation="productuniquelist.xsd"/>
+	<xsd:complexType name="ruleRelationListType">
+		<xsd:sequence>
+			<xsd:element name="rule-relation" type="ruleRelationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ruleRelationType">
+		<xsd:all>
+			<xsd:element name="rule-type" type="ruleType"/>
+			<xsd:element name="product-unique-list" type="productUniqueListType"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="ruleType">
+		<xsd:restriction base="xsd:string">
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Ib Gregersen CSC Consulting Group A/S  -->
+	<!-- ======== BroadbandManagerReply ======== -->
+	<xsd:complexType name="broadbandManagerReplyType">
+		<xsd:annotation>
+			<xsd:documentation>The reply for ISP derived from the response of calls to IHTsoa/DSLMan system.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="status-code" type="statusCodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Status-code from IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="status-message" type="statusMessageType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Status-message from IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="response" type="responseType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>XML-Response from IHTsoa. In order to make Columbine transparent to changes or new operations in IHTsoa the response is considered as text. Format of the xml-response can be found in the DTD for IHTsoa</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+	</xsd:complexType>
+	<!-- These are defined separately to allow for different regexps -->
+	<xsd:simpleType name="statusCodeType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="statusMessageType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="responseType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+</xsd:schema>

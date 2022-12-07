@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!-- product identification list -->
+  <xsd:include schemaLocation="product.xsd"/>
+
+  <xsd:complexType name="productUniqueListType">
+    <xsd:sequence>
+      <xsd:element name="product-unique" minOccurs="2" maxOccurs="2">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="product-id" type="productIdType"/>
+            <xsd:element name="sik-value" type="sikValueType" minOccurs="0"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

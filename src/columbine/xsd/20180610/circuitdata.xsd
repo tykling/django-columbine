@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Cobi (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:include schemaLocation="nodelist.xsd"/>
+	<xsd:include schemaLocation="productlist.xsd"/>
+	<xsd:include schemaLocation="connectionpathnodelist.xsd"/>
+	<xsd:include schemaLocation="copperStopDetailslist.xsd"/>	
+	<xsd:complexType name="lockedspeedType">
+		<xsd:all>
+			<xsd:element name="speed-lock" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="speed-lock-limit" type="LineSpeed" minOccurs="0"/>
+			<xsd:element name="speed-lock-date" type="xsd:date" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="subscriberInstallationType">
+		<xsd:sequence minOccurs="0">
+			<xsd:element name="installationId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="installationCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="installationPort" type="InstallationPortType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="fiberenabled" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="InstallationPortType">
+		<xsd:sequence minOccurs="0">
+			<xsd:element name="installationPort" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="installationStatus" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="occupeidByExternal" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="circuitDataType">
+		<xsd:all>
+			<xsd:element name="visitationNodeAnalysisSeq" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="line-use" type="xsd:string" minOccurs="0"/>
+			<!-- 14049-Simply EVPN: Added for PriceTool start -->
+			<xsd:element name="visitation-lid" type="xsd:string" minOccurs="0"/>
+			<!-- 14049-Simply EVPN: Added for PriceTool end -->
+			<xsd:element name="lid-status" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="installation-code" type="xsd:string" minOccurs="0"/>
+ 		    <xsd:element name="equipType" type="xsd:string" minOccurs="0"/>
+ 		    <!-- 14049-Simply EVPN: Added for PriceTool start -->
+ 		    <xsd:element name="distanceToFiberEnd" type="xsd:string" minOccurs="0"/>
+ 		    <!-- 14049-Simply EVPN: Added for PriceTool end -->
+			<xsd:element name="gds-evaluation" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="total-db150" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="end-point-product-list" type="productListType" minOccurs="0"/>
+			<xsd:element name="node-list" type="nodeListType" minOccurs="0"/>
+			<xsd:element name="connection-path-node-list" type="connectionPathNodeList" minOccurs="0"/>
+			<xsd:element name="lockedspeed" type="lockedspeedType" minOccurs="0"/>
+		    <xsd:element name="pbPossible" type="xsd:string" nillable="true" />
+
+		    <!-- 14049-Simply EVPN: Added for PriceTool start -->
+		    <xsd:element name="pb-status" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="isBroken" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="inventoryFetchType" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="mawisId" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="addressIndicator" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="ownerId" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="deselectReason" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="deselectExplanation" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="deselectDate" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="infrastructureType" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="infrastructureTypeExplanation" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="diggingLength" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="currentUpSpeedCustomer" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="currentDownSpeedCustomer" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="gshdslUpSpeedCustomer" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="gshdslDownSpeedCustomer" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="numberOfGshdslPairs" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="cpeType" type="xsd:string" minOccurs="0"/>
+		    <xsd:element name="location" type="xsd:string" minOccurs="0"/>
+		    <!-- 14049-Simply EVPN: Added for PriceTool end -->
+
+			<!-- Added by Susmita:17638 Unified Visitation start -->
+		    <xsd:element name="kapStatus" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="docsisVersion" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="infrastructureOwner" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="multipleInstallationAvailable" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="agreementId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="agreementName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="coaxCloseDateForSale" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="coaxInfrastructureStartDate" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="coaxInfrastructureEndDate" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="kapEndDate" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="kapId" type="xsd:string" minOccurs="0"/>
+			<!-- 86017-Coax extension in NetInfo start -->
+			<xsd:element name="bbWithoutTvPossible" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="plugType" type="xsd:string" minOccurs="0"/>
+			<!-- 86017-Coax extension in NetInfo end -->
+			<!--<xsd:element name="copperStopDetails" type="copperStopDetails" minOccurs="0"/>-->
+			<xsd:element name="copperStopDetails" type="copperStopDetailsList" minOccurs="0"/>
+		    <!-- Added by Susmita:17638 Unified Visitation end -->
+			
+			<xsd:element name="numberOfUsedCopperLines" type="xsd:int" nillable="true" />
+			<xsd:element name="numberOfFreeCopperLines" type="xsd:int" nillable="true"  />
+			<xsd:element name="connectorCablesStatus" type="xsd:int" nillable="true"  />
+			<xsd:element name="ethernetEarliestDeliveryDate" type="xsd:string" nillable="true" minOccurs="0" />
+			<xsd:element name="RFTVEarliestDeliveryDate" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="rawFiberEarliestDeliveryDate" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="speed" type="xsd:string" nillable="true" minOccurs="0" /><!-- mio 47337 -->
+		   	
+		</xsd:all>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Lisbeth Cappelen (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:include schemaLocation="types.xsd"/>
+	<xsd:include schemaLocation="customerrelation.xsd"/>
+	<!-- isdn-phone-no-list type -->
+	<xsd:complexType name="isdnPhoneNoListType">
+		<xsd:annotation>
+			<xsd:documentation>
+			 5.11
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="isdn-phone-no" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="phone-no" type="phoneNoType" minOccurs="0"/>
+						<xsd:element name="phonebook-public-status" type="phoneBookPublicStatusType" minOccurs="0"/>
+						<xsd:element name="isdn-type" type="isdnType" minOccurs="0"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

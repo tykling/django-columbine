@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- 2012-11-05 Replicated at Teamshare -->
+<!-- http://teamshare.tdk.dk/external/projects/15006/Work%20space/Forms/AllItems.aspx?RootFolder=%2fexternal%2fprojects%2f15006%2fWork%20space%2fStage%203%20%2d%20Build%20and%20Test%2fPhase%203B%20%2d%20SI%20Detailed%20Design%20and%20Build&FolderCTID=&View=%7bB7B20CEC%2d0664%2d430C%2dAE4B%2dE83AF331D034%7d -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="CuOrderStatusChangeEvent">
+		<xsd:sequence>
+			<xsd:element name="EventId" type="EventIdType" />
+			<xsd:element name="SubscriberNo" type="SubscriberNoType" />
+			<xsd:element name="SubscriberNoOld" type="SubscriberNoType"	minOccurs="0" />
+			<xsd:element name="EventDate" type="xsd:date" />
+			<xsd:element name="EventTime" type="xsd:time" />
+			<xsd:element name="CuOrderNo" type="CuOrderNoType" />
+			<xsd:element name="CuOrderStatus" type="CuOrderStatusType" />
+			<xsd:element name="OrderId" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="EventIdType">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SubscriberNoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="([0-9a-zA-Z]{8})?" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CuOrderNoType">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="9" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CuOrderStatusType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="started" />
+			<xsd:enumeration value="ordered" />
+			<xsd:enumeration value="executed" />
+			<xsd:enumeration value="invoiced" />
+			<xsd:enumeration value="cancelled" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

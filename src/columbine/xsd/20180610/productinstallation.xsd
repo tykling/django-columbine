@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Ib (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--product-installation-->
+	<xsd:complexType name="product-installationType">
+		<xsd:annotation>
+			<xsd:documentation>20090603: product-installation indeholder et produkt på en lid-installation</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="product-count" type="xsd:integer"/>
+			<xsd:element name="product-no" type="xsd:int"/>
+			<xsd:element name="product-text" type="xsd:string"/>
+			<xsd:element name="product-price" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="product-rejection" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="product-date" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

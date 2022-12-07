@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Cobi (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- ======= parameterListType ======= -->
+	<xsd:include schemaLocation="types.xsd"/>
+	<xsd:include schemaLocation="order.xsd"/>
+	<xsd:include schemaLocation="address.xsd"/>
+	<xsd:include schemaLocation="installation.xsd"/>
+	<xsd:include schemaLocation="culinkaddress.xsd"/>
+	<xsd:include schemaLocation="broadbandmanagerparameters.xsd"/>
+	<xsd:include schemaLocation="netinfoParameters.xsd"/>
+	<xsd:complexType name="parameterListType">
+		<xsd:all>
+			<xsd:element name="phone-id-addr" type="phoneNoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>phone-id-addr er søgetelefonnummer til fremfinding af adressen.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="phone-no" type="phoneNoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Telefonnummer til at identificere en installation, adresse eller kunde m.m. Bruges af mange forskellige tjenester.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="phone-id-old" type="phoneNoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Det telefonnummer/kredløbsnummer der identificerer et eksisterende BB som skal pilles ned i forbindelse med en flytning eller skift af bredbånds udbyder</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="phone-no-teleconnect" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>phone-no-teleconnect: is for connecting/adding a teleconnect to one of the GBB-services: GBB-OPR-M-LID, GBB-OPR-U-LID, GBB-RET, SBBU-GBB-OPR-M-LID, SBBU-GBB-OPR-U-LID</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+      <xsd:element name="phone-no-voip" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>phone-no-voip: is for connecting/adding a voip to the GBB-services: GBBF-T-OPR-BB</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+			<xsd:element name="phone-no-mask" type="phoneIdType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>phone-no-mask er en maske, kan indeholde cifre og tegnet %, og bruges ifm nummerreservering til fremsøgning af numre til efterfølgende reservation.  </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="phone-no-from" type="phoneNoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>phone-no-from er et 8-cifret nummer, og bruges ifm nummerreservering til fremsøgning af numre til efterfølgende reservation. Der søges fra dette nummer. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="phone-no-next" type="phoneNoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>phone-no-next er et 8-cifret nummer, og bruges ifm nummerreservering til fremsøgning af yderligere numre til efterfølgende reservation. Der søges fra dette nummer. Samtidig vil fremsøgte numre overholde en eventuel maske (phone-no-mask). </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="phone-no-reserve" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>phone-no-reserve er det 8-cifret nummer, der ENTEN ønskes reserveret (ifm nummerreservering) ELLER allerede er reserveret (ifm teleconnect). </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="previous-or-vacate-phone-no" type="phoneNoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>previous-or-vacate-phone-no bruges ved installationsvalg. Kan indeholde den Lid der ønskes brugt.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="reuse-of-address" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>reuse-of-address bruges ved installationsvalg. Indeholder markering for om adressen fraflyttes.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="1"/>
+						<xsd:enumeration value="J"/>
+						<xsd:enumeration value="j"/>
+						<xsd:enumeration value="N"/>
+						<xsd:enumeration value="n"/>
+						<xsd:enumeration value=""/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+      <xsd:element name="addressIndicator" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="account-no" type="accountNoType" minOccurs="0"/>
+			<xsd:element name="service-provider" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="import" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="service" type="serviceType" minOccurs="0"/>
+			<xsd:element name="order-no" type="orderNoType" minOccurs="0"/>
+			<xsd:element name="zip-code" type="zipCodeType" minOccurs="0"/>
+			<xsd:element name="house-no" type="houseNoType" minOccurs="0"/>
+			<xsd:element name="visitationNodeAnalysisSeq" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="requested-date" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="requested-date-from" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="requested-date-to" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="requested-time-from" type="xsd:time" minOccurs="0"/>
+			<xsd:element name="requested-time-to" type="xsd:time" minOccurs="0"/>
+			<xsd:element name="book-exact-date" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="maximum-elements-returned" type="maximumElementsReturnedType" minOccurs="0"/>
+			<xsd:element name="event-list-batch-no" type="eventListBatchNoType" minOccurs="0"/>
+			<xsd:element name="more-data" minOccurs="0"/>
+			<xsd:element name="no-data" minOccurs="0"/>
+			<xsd:element name="task-id" type="taskIdType" minOccurs="0"/>
+			<xsd:element name="installation" type="installationType" minOccurs="0"/>
+			<xsd:element name="cu-link-address" type="culinkaddressType" minOccurs="0"/>
+			<xsd:element name="broadband-manager-parameters" type="broadbandManagerParametersType" minOccurs="0"/>
+			<xsd:element name="external-customer-reference" type="externalCustomerReferenceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>AO-referencenummer. Valideres mod telefonnummerfor TDC-erhverv, og valideres mod kontonummer for TDC-privat. Ellers ingen validering. (Kræves udfyldt for SBBU-tjenester).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="rejection-cause-code" type="rejectioncauseCodeType" minOccurs="0"/>
+			<xsd:element name="netinfo-parameters" type="netinfoParametersType" minOccurs="0"/>
+			<!-- Elements of the various uses of parameterListType
+           The paramlist type specifics must be defined below.
+           This really ought to be specified per order type..... let's do that tomorrow.
+      -->
+		</xsd:all>
+	</xsd:complexType>
+	<!-- serviceType -->
+	<xsd:simpleType name="serviceType">
+		<xsd:annotation>
+			<xsd:documentation>
+       Service type
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="DRK-OPR"/>
+			<xsd:enumeration value="DRK-RET"/>
+			<xsd:enumeration value="DRK-NED"/>
+			<xsd:enumeration value="RK-OPR"/>
+			<xsd:enumeration value="RK-RET"/>
+			<xsd:enumeration value="RK-NED"/>
+			<xsd:enumeration value="KUNDENR-EXT"/>
+			<xsd:enumeration value="KONVPSTN"/>
+			<xsd:enumeration value="I2-K"/>
+			<xsd:enumeration value="TSS"/>
+			<xsd:enumeration value="LUKÅBN"/>
+			<xsd:enumeration value="OPS-TLF"/>
+			<xsd:enumeration value="SERV-AFT"/>
+			<xsd:enumeration value="GBB-OPR-M-LID"/>
+			<xsd:enumeration value="GBB-OPR-U-LID"/>
+			<xsd:enumeration value="GBB-NED"/>
+			<xsd:enumeration value="GBB-RET"/>
+<!--  <xsd:enumeration value="GBBF-T-OPR"/> -->
+      <xsd:enumeration value="GBBF-T-OPR-BB"/>
+      <xsd:enumeration value="GBBF-T-OPR-TV"/>
+      <xsd:enumeration value="GBBF-T-NED-BB"/>
+      <xsd:enumeration value="GBBF-T-NED-TV"/>
+<!--  <xsd:enumeration value="GBBF-T-NRAE-VOIP"/> -->
+      <xsd:enumeration value="GBBF-T-RET-BB"/>
+      <xsd:enumeration value="GBBF-T-RET-TV"/>
+			<xsd:enumeration value="BSAE-OPR-M-LID"/>
+			<xsd:enumeration value="BSAE-OPR-U-LID"/>
+			<xsd:enumeration value="BSAE-NED"/>
+			<xsd:enumeration value="BSAE-RET"/>
+			<xsd:enumeration value="BSAEF-OPR-U-LID"/>
+			<xsd:enumeration value="BSAEF-NED"/>
+			<xsd:enumeration value="BSAEF-RET"/>
+			<xsd:enumeration value="BSAEG-OPR-U-LID"/>
+      <xsd:enumeration value="BSAC-OPR"/>
+      <xsd:enumeration value="BSAC-NED"/>
+      <xsd:enumeration value="BSAC-RET"/>
+            <xsd:enumeration value="VULA-OPR-M-LID"/>
+            <xsd:enumeration value="VULA-OPR-U-LID"/>
+            <xsd:enumeration value="VULA-NED"/>
+            <xsd:enumeration value="VULA-RET"/>
+            <xsd:enumeration value="VULA-UC-OPR-M-LID"/>
+            <xsd:enumeration value="VULA-UC-OPR-U-LID"/>
+            <xsd:enumeration value="VULA-UC-NED"/>
+            <xsd:enumeration value="VULA-UC-RET"/>
+            <xsd:enumeration value="VULA-UC-VULA-C"/>
+            <xsd:enumeration value="VULA-C-VULA-UC"/>
+			<xsd:enumeration value="RF-OPR"/>
+      <xsd:enumeration value="RF-RET"/>
+			<xsd:enumeration value="RF-NED"/>
+			<xsd:enumeration value="SBBU-BSAE-OPR-M-LID"/>
+			<xsd:enumeration value="SBBU-BSAE-OPR-U-LID"/>
+			<xsd:enumeration value="SBBU-BSAEG-OPR-U-LID"/>
+            <xsd:enumeration value="SBBU-VULA-OPR-M-LID"/>
+            <xsd:enumeration value="SBBU-VULA-OPR-U-LID"/>
+            <xsd:enumeration value="SBBU-VULA-UC-OPR-M-LID"/>
+            <xsd:enumeration value="SBBU-VULA-UC-OPR-U-LID"/>
+			<xsd:enumeration value="SBBU-DRK-OPR"/>
+			<xsd:enumeration value="SBBU-RK-OPR"/>
+			<xsd:enumeration value="SBBU-GBB-OPR-M-LID"/>
+			<xsd:enumeration value="SBBU-GBB-OPR-U-LID"/>
+			<xsd:enumeration value="SBBU-BB-NED"/>
+            <xsd:enumeration value="SP-OVERDRAG-TDC"/>
+            <xsd:enumeration value="SP-OVERDRAG"/>
+            <xsd:enumeration value="HEMUDEL"/>
+			<xsd:enumeration value="TELECON-NEDT"/>
+			<xsd:enumeration value="TELECON-NRAE"/>
+			<xsd:enumeration value="TELECON-OPR"/>
+			<xsd:enumeration value="TELECON-RET"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- maximumElementsReturnedType -->
+	<xsd:simpleType name="maximumElementsReturnedType">
+		<xsd:annotation>
+			<xsd:documentation>
+             Maximum number of events to be received.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- eventlistBatchNoType -->
+	<xsd:simpleType name="eventListBatchNoType">
+		<xsd:annotation>
+			<xsd:documentation>
+             Batch number for the number of events the receipt is for.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

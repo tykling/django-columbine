@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 4, Installed Multi for 5 (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+     -->
+	<xsd:include schemaLocation="address.xsd"/>
+	<xsd:complexType name="customerType">
+		<xsd:annotation>
+			<xsd:documentation>5.7 + 5.8</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="name" type="customerNameType" minOccurs="0"/>
+			<xsd:element name="first-name" type="firstNameType" minOccurs="0"/>
+			<xsd:element name="last-name" type="lastNameType" minOccurs="0"/>
+			<xsd:element name="occupation" type="occupationType" minOccurs="0"/>
+			<xsd:element name="company-name" type="companyNameType" minOccurs="0"/>
+			<xsd:element name="account-no" type="accountNoType" minOccurs="0"/>
+			<xsd:element name="cvr-no" type="cvrNoType" minOccurs="0"/>
+			<xsd:element name="remarks" type="customerRemarksType" minOccurs="0"/>
+			<xsd:element name="address" type="addressType" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="customerNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="104"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="firstNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="34"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="lastNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="34"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="occupationType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="34"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="companyNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="34"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="accountNoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="([0-9]{9})?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="cvrNoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="9"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="customerRemarksType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="180"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

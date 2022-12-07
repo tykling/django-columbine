@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Ib (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xsd:include schemaLocation="types.xsd"/>
+	<xsd:include schemaLocation="order.xsd"/>
+	<!--product-installation-data-->
+	<xsd:complexType name="add-phone-no-listType">
+		<xsd:annotation>
+			<xsd:documentation>20080303: add-phone-no-list indeholder en liste over tilknyttede(additional) under-lider</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="add-phone-no" type="add-phone-noType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="add-phone-noType">
+		<xsd:sequence>
+			<xsd:element name="phone-no" type="phoneNoType"/>
+			<xsd:element name="phonebook-public-status" type="phoneBookPublicStatusType"/>
+			<xsd:element name="phone-type" type="phoneNoTypeType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

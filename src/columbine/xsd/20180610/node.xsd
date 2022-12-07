@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by vsingh76 (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="Technologies">
+		<xsd:annotation>
+		  <xsd:documentation>
+		   This contains technology details.
+		  </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="aggregate" type="xsd:string" nillable="false" maxOccurs="2"/>
+			<xsd:element name="equipment" type="Equipment" nillable="false" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Equipment">
+		<xsd:sequence>
+			<xsd:element name="equipmentValue" type="xsd:string" nillable="true"/>
+			<xsd:element name="splitterEnabled" type="xsd:string" nillable="true"/>
+			<xsd:element name="ginpEnabled" type="xsd:string" nillable="true"/>
+			<xsd:element name="Vectoring" type="xsd:string" nillable="true"/>
+		</xsd:sequence>
+	</xsd:complexType>
+		<!-- m58127 start-->
+	<xsd:complexType name="DslamDetails">		
+		<xsd:sequence>
+			<xsd:element name="dslam" type="Dslam" nillable="false" maxOccurs="unbounded"/>			
+		</xsd:sequence>
+	</xsd:complexType>	
+	<xsd:complexType name="Dslam">		
+		<xsd:sequence>
+			<xsd:element name="dslamName" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="splitterEnabled" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="availableSlots" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="card" type="Card" nillable="false" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>	
+	<xsd:complexType name="Card">		
+		<xsd:sequence>
+		  	<xsd:element name="cardType" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xsd:element name="availablePorts" type="xsd:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+	    </xsd:sequence>			
+	</xsd:complexType>	
+	<!-- m58127 end-->
+	<xsd:complexType name="LineSpeed">
+		<xsd:sequence>
+			<xsd:element name="lineSpeedUp" type="xsd:string" nillable="false" minOccurs="0"/>
+			<xsd:element name="lineSpeedDown" type="xsd:string" nillable="false" minOccurs="0"/>
+			<xsd:element name="lineSpeedTechnology" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NetServiceBandwidth">
+		<xsd:all>
+			<xsd:element name="maxUpStream" type="LineSpeed" nillable="false" minOccurs="0"/>
+			<xsd:element name="maxDownStream" type="LineSpeed" nillable="false" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="NetServiceMaxLineSpeed">
+		<xsd:all>
+			<xsd:element name="maxUpStream" type="LineSpeed" nillable="false" minOccurs="0"/>
+			<xsd:element name="maxDownStream" type="LineSpeed" nillable="false" minOccurs="0"/>
+			<xsd:element name="notificationMessage" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="noYellowSpeed" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="yellowSpeedsDownsized" type="xsd:string" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+<!-- Removed by Susmita: 14106-VULA UC Ramp-up phase 2-CCN3 start-->
+<!--<xsd:complexType name="AvailablePorts">
+		<xsd:sequence>
+			<xsd:element name="numberOfAvailablePorts" type="xsd:string" nillable="false"/>
+			<xsd:element name="cardType" type="xsd:string" nillable="false"/>
+		</xsd:sequence>
+ </xsd:complexType> -->
+<!-- Removed by Susmita: 14106-VULA UC Ramp-up phase 2-CCN3 end-->
+	
+	<xsd:complexType name="Node">
+		<xsd:annotation>
+			<xsd:documentation>Node contains whether it is current Node, Node name, Node type, technologies, attenuation, net service bandwidth and net service max line speed.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="current" type="xsd:string" nillable="false" minOccurs="0"/>
+			<xsd:element name="nodeName" type="xsd:string" nillable="false" minOccurs="0"/>
+			<xsd:element name="nodeType" type="xsd:string" nillable="false" minOccurs="0"/>
+			<xsd:element name="nodeTypeName" type="xsd:string" nillable="false" minOccurs="0"/>
+			<xsd:element name="nqaName" type="xsd:string" nillable="false" minOccurs="0"/><!-- 86017-Coax extension in NetInfo -->
+			<!-- 17347 Trefor DIMI start-->
+			<xsd:element name="tvEnabled" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+			<!-- 17347 Trefor DIMI end-->
+	    	<xsd:element name="technologies" type="Technologies" nillable="false" minOccurs="0"/>
+	    	<!-- m58127 start-->
+	    	<xsd:element name="dslamDetails" type="DslamDetails" nillable="false" minOccurs="0" maxOccurs="unbounded"/> 
+	    	<!-- m58127 end-->
+			<xsd:element name="db150" type="xsd:string" nillable="false" minOccurs="0"/>
+			<xsd:element name="netServiceBandwidth" type="NetServiceBandwidth" nillable="false" minOccurs="0"/>
+			<xsd:element name="netServiceMaxLineSpeed" type="NetServiceMaxLineSpeed" nillable="false" minOccurs="0"/>
+			<xsd:element name="reliablity" type="xsd:string" minOccurs="0"/>
+	   <!-- Removed by Susmita: 14106-VULA UC Ramp-up phase 2-CCN3 start-->
+	   <!-- <xsd:element name="availablePorts" type="AvailablePorts" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="availablePortsForUC" type="AvailablePorts" minOccurs="0" maxOccurs="unbounded"/>--><!-- VULA UC70915 -->
+	   <!-- Removed by Susmita: 14106-VULA UC Ramp-up phase 2-CCN3 end-->
+			<xsd:element name="exchangeVULAEnabled" type="xsd:string" nillable="true" minOccurs="0"/>
+			<xsd:element name="exchangeVULAUCEnabled" type="xsd:string" nillable="true" minOccurs="0"/><!-- VULA UC70915 -->
+			<xsd:element name="dslamMake" type="xsd:string" nillable="false" minOccurs="0"/>
+			<xsd:element name="ipv6Enabled" type="xsd:boolean" nillable="false" minOccurs="0"/>
+			<!-- 14049-Simply EVPN: Added for PriceTool start -->
+			<xsd:element name="hasCapacity" type="xsd:string" nillable="false" minOccurs="0"/>
+			<!-- 14049-Simply EVPN: Added for PriceTool end -->
+
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

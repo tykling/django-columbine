@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+  -->
+  <xsd:include schemaLocation="productchangelist.xsd"/>
+
+  <!-- product parameter type list -->
+  <xsd:complexType name="productParameterTypeListType">
+    <xsd:sequence>
+      <xsd:element name="product-parameter-type" minOccurs="0">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="name" type="productParameterNameType"  minOccurs="1"/>
+            <xsd:element name="title" type="productParameterTitleType"  minOccurs="1"/>
+            <xsd:element name="syntax-validate-expr" type="productSyntaxValidateExprType" minOccurs="0"/>
+            <xsd:element name="param-value" type="changeParameterValueType" minOccurs="0"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="productParameterNameType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="productParameterTitleType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="50"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="productSyntaxValidateExprType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="100"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

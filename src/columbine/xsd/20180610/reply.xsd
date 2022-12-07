@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by CSC (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright CSC Consulting Group A/S  -->
+	<xsd:include schemaLocation="address.xsd"/>
+	<xsd:include schemaLocation="central.xsd"/>
+  <xsd:include schemaLocation="coaxinfo.xsd"/>
+	<xsd:include schemaLocation="linequalification.xsd"/>
+	<xsd:include schemaLocation="types.xsd"/>
+	<xsd:include schemaLocation="cbsystem.xsd"/>
+	<xsd:include schemaLocation="customer.xsd"/>
+	<xsd:include schemaLocation="customerrelation.xsd"/>
+	<xsd:include schemaLocation="subscriptioninfo.xsd"/>
+	<xsd:include schemaLocation="order.xsd"/>
+	<xsd:include schemaLocation="parameterlist.xsd"/>
+	<xsd:include schemaLocation="product.xsd"/>
+	<xsd:include schemaLocation="productlist.xsd"/>
+	<xsd:include schemaLocation="productconfiglist.xsd"/>
+	<xsd:include schemaLocation="productcountrulelist.xsd"/>
+	<xsd:include schemaLocation="productgrouplist.xsd"/>
+	<xsd:include schemaLocation="productparametertypelist.xsd"/>
+	<xsd:include schemaLocation="rulerelationlist.xsd"/>
+	<xsd:include schemaLocation="rulerelationgrouplist.xsd"/>
+	<xsd:include schemaLocation="enddateofcommitmentlist.xsd"/>
+	<xsd:include schemaLocation="addphonenolist.xsd"/>
+	<xsd:include schemaLocation="addresschoicelist.xsd"/>
+	<xsd:include schemaLocation="tasklist.xsd"/>
+	<xsd:include schemaLocation="isdnphonenolist.xsd"/>
+	<xsd:include schemaLocation="productinstallationdata.xsd"/>
+	<xsd:include schemaLocation="rejectionproductlist.xsd"/>
+	<xsd:include schemaLocation="error.xsd"/>
+	<xsd:include schemaLocation="eventlist.xsd"/>
+	<xsd:include schemaLocation="dslam.xsd"/>
+	<xsd:include schemaLocation="orderlist.xsd"/>
+	<xsd:include schemaLocation="broadbandinfo.xsd"/>
+	<xsd:include schemaLocation="broadbandmanagerreply.xsd"/>
+	<xsd:include schemaLocation="circuitlist.xsd"/>
+	<xsd:include schemaLocation="circuitdata.xsd"/>
+	<xsd:include schemaLocation="teleconnectinfo.xsd"/>
+	<xsd:element name="reply">
+		<xsd:complexType>
+			<xsd:annotation>
+				<xsd:documentation>The main command element</xsd:documentation>
+			</xsd:annotation>
+			<xsd:all>
+				<xsd:element name="cb-system" type="cbSystemType"/>
+				<xsd:element name="phone-no-list" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>phone-no-list bruges ifm nummerreservering.</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="phone-no" type="phoneNoType" maxOccurs="10">
+								<xsd:annotation>
+									<xsd:documentation>phone-no er de ifm numerreserverring  fremsøgte numre.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="name" type="XactionNameType"/>
+				<xsd:element name="external-customer-reference" type="externalCustomerReferenceType" minOccurs="0"/>
+				<xsd:element name="external-requisition-no-reference" type="externalRequisitionNoReferenceType" minOccurs="0"/>
+				<xsd:element name="customer-relation" type="customerRelationType" minOccurs="0"/>
+				<xsd:element name="broadband-info" type="broadbandinfoType" minOccurs="0"/>
+				<xsd:element name="circuit-list" type="circuitListType" minOccurs="0"/>
+				<xsd:element name="circuit-data" type="circuitDataType" minOccurs="0"/>
+				<xsd:element name="subscription-info" type="subscriptionInfoType" minOccurs="0"/>
+				<xsd:element name="order" type="orderType" minOccurs="0"/>
+				<xsd:element name="add-phone-no-list" type="add-phone-no-listType" minOccurs="0"/>
+				<xsd:element name="product-list" type="productListType" minOccurs="0"/>
+				<xsd:element name="product-group-list" type="productGroupListType" minOccurs="0"/>
+				<xsd:element name="product-config-list" type="productConfigListType" minOccurs="0"/>
+				<xsd:element name="product-count-rule-list" type="productCountRuleListType" minOccurs="0"/>
+				<xsd:element name="product-installation-data" type="product-installation-dataType" minOccurs="0"/>
+				<xsd:element name="rejection-product-list" type="rejection-product-listType" minOccurs="0"/>
+				<xsd:element name="rule-relation-list" type="ruleRelationListType" minOccurs="0"/>
+				<xsd:element name="rule-relation-group-list" type="ruleRelationGroupListType" minOccurs="0"/>
+				<xsd:element name="end-date-of-commitment-list" type="endDateOfCommitmentListType" minOccurs="0"/>
+				<xsd:element name="address" type="addressType" minOccurs="0"/>
+				<xsd:element name="central" type="centralType" minOccurs="0"/>
+        <xsd:element name="coax-information" type="coaxinfoType" minOccurs="0"/>
+				<xsd:element name="line-qualification" type="lineQualificationType" minOccurs="0"/>
+				<xsd:element name="address-choice-list" type="addressChoiceListType" minOccurs="0"/>
+				<xsd:element name="task-list" type="taskListType" minOccurs="0"/>
+				<xsd:element name="isdn-phone-no-list" type="isdnPhoneNoListType" minOccurs="0"/>
+				<xsd:element name="event-list" type="eventListType" minOccurs="0"/>
+				<xsd:element name="event-status" type="eventStatusType" minOccurs="0"/>
+				<xsd:element name="dslam" type="dslamType" minOccurs="0"/>
+				<xsd:element name="order-list" type="orderListType" minOccurs="0"/>
+				<xsd:element name="broadband-manager-reply" type="broadbandManagerReplyType" minOccurs="0"/>
+				<xsd:element name="error" type="errorType" minOccurs="0"/>
+				<xsd:element name="teleconnect-ordering-info" type="teleconnectInfoType" minOccurs="0"/>
+                <xsd:element name="copper-blocking-text" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="parameter-list" type="parameterListType"/>
+			</xsd:all>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

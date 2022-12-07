@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright CSC Consulting Group A/S  -->
+	<!-- ======== TeleconnectInfo ======== -->
+
+	<!-- subscription-info -->
+	<xsd:complexType name="teleconnectInfoType">
+		<xsd:annotation>
+			<xsd:documentation>TeleconnectInfo is holding teleconnect-ordering-type which is dynamically defined by the products on the installation</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="teleconnect-ordering-type" type="teleconnectOrderingType"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="teleconnectOrderingType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+</xsd:schema>

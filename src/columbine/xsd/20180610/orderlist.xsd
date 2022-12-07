@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Ib (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:include schemaLocation="order.xsd"/>
+	<xsd:include schemaLocation="types.xsd"/>
+	<!-- Order-list type -->
+	<xsd:complexType name="orderListType">
+		<xsd:annotation>
+			<xsd:documentation>
+             20061215: order-detail vil indeholde enten execution-date-special 
+             eller execution-date, execution-time-from, execution-time-to
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="order-detail" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="phone-no" type="phoneNoType" minOccurs="0"/>
+						<xsd:element name="phone-type" type="phoneNoTypeType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>LID-type - f.eks PSTN eller NBST </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="phonebook-public-status" type="phoneBookPublicStatusType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Hvad må vises i telefonbogen</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="order-no" type="orderNoType" minOccurs="0"/>
+						<xsd:element name="parent-order-no" type="orderNoType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Indeholder hovedordrenr, hvis denne ordre er en underordre   </xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="order-type" type="orderTypeType" minOccurs="0"/>
+						<xsd:element name="order-date" type="xsd:date" minOccurs="0"/>
+						<xsd:element name="execution-date-special" type="specialType" minOccurs="0"/>
+						<xsd:element name="execution-date" type="xsd:date" minOccurs="0"/>
+						<xsd:element name="execution-time-from" type="xsd:time" minOccurs="0"/>
+						<xsd:element name="execution-time-to" type="xsd:time" minOccurs="0"/>
+						<xsd:element name="user-id" type="userIdType" minOccurs="0"/>
+						<xsd:element name="order-status" type="orderStatusType" minOccurs="0"/>
+						<xsd:element name="refusal" type="refusalType" minOccurs="0"/>
+						<xsd:element name="confirmed" type="confirmedType" minOccurs="0"/>
+						<xsd:element name="confirmation-date" type="xsd:date" minOccurs="0"/>
+						<xsd:element name="letter" type="letterType" minOccurs="0"/>
+						<xsd:element name="form-of-application" type="formOfApplicationType" minOccurs="0"/>
+						<xsd:element name="technician-on-site" type="technicianOnSiteType" minOccurs="0"/>
+						<xsd:element name="order-reference" type="orderReferenceType" minOccurs="0"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="refusalType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="true"/>
+			<xsd:enumeration value="false"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="confirmedType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="true"/>
+			<xsd:enumeration value="false"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="letterType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="true"/>
+			<xsd:enumeration value="false"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="formOfApplicationType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="technicianOnSiteType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="true"/>
+			<xsd:enumeration value="false"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

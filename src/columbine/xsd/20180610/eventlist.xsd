@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Ib (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+     -->
+	<xsd:include schemaLocation="types.xsd"/>
+	<xsd:include schemaLocation="order.xsd"/>
+	<xsd:include schemaLocation="customerrelation.xsd"/>
+  <xsd:include schemaLocation="tasklist.xsd"/>
+  <xsd:include schemaLocation="ordermessage.xsd"/>
+	<xsd:complexType name="eventListType">
+		<xsd:annotation>
+			<xsd:documentation>5.11</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:choice>
+				<xsd:element name="order-create-event" type="orderCreateEventType"/>
+				<xsd:element name="order-change-event" type="orderChangeEventType"/>
+				<xsd:element name="order-status-change-event" type="orderStatusChangeEventType"/>
+				<xsd:element name="task-status-change-event" type="taskStatusChangeEventType"/>
+        <xsd:element name="order-message-event" type="orderMessageEventType"/>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="orderCreateEventType">
+		<xsd:all>
+			<xsd:element name="event-id" type="eventIdType"/>
+			<xsd:element name="external-customer-reference" type="externalCustomerReferenceType" minOccurs="0"/>
+			<xsd:element name="external-requisition-no-reference" type="externalRequisitionNoReferenceType"/>
+			<xsd:element name="phone-no" type="phoneNoType"/>
+			<xsd:element name="phone-no-old" type="phoneNoType" minOccurs="0"/>
+			<xsd:element name="customer-relation" type="customerRelationType"/>
+			<xsd:element name="order" type="orderType"/>
+			<xsd:element name="event-date" type="xsd:date"/>
+			<xsd:element name="event-time" type="xsd:time"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="orderChangeEventType">
+		<xsd:all>
+			<xsd:element name="event-id" type="eventIdType"/>
+			<xsd:element name="external-customer-reference" type="externalCustomerReferenceType" minOccurs="0"/>
+			<xsd:element name="external-requisition-no-reference" type="externalRequisitionNoReferenceType" minOccurs="0"/>
+			<xsd:element name="phone-no" type="phoneNoType"/>
+			<xsd:element name="phone-no-old" type="phoneNoType" minOccurs="0"/>
+			<xsd:element name="order" type="orderType"/>
+			<xsd:element name="event-date" type="xsd:date"/>
+			<xsd:element name="event-time" type="xsd:time"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="orderStatusChangeEventType">
+		<xsd:all>
+			<xsd:element name="event-id" type="eventIdType"/>
+			<xsd:element name="external-customer-reference" type="externalCustomerReferenceType" minOccurs="0"/>
+			<xsd:element name="external-requisition-no-reference" type="externalRequisitionNoReferenceType" minOccurs="0"/>
+			<xsd:element name="phone-no" type="phoneNoType"/>
+			<xsd:element name="phone-no-old" type="phoneNoType" minOccurs="0"/>
+			<xsd:element name="order-no" type="orderNoType"/>
+			<xsd:element name="order-status" type="orderStatusType"/>
+			<xsd:element name="event-date" type="xsd:date"/>
+			<xsd:element name="event-time" type="xsd:time"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="taskStatusChangeEventType">
+		<xsd:all>
+			<xsd:element name="event-id" type="eventIdType"/>
+			<xsd:element name="external-customer-reference" type="externalCustomerReferenceType" minOccurs="0"/>
+			<xsd:element name="external-requisition-no-reference" type="externalRequisitionNoReferenceType" minOccurs="0"/>
+			<xsd:element name="phone-no" type="phoneNoType"/>
+			<xsd:element name="phone-no-old" type="phoneNoType" minOccurs="0"/>
+			<xsd:element name="order-no" type="orderNoType"/>
+			<xsd:element name="task-list" type="taskListType"/>
+			<xsd:element name="event-date" type="xsd:date"/>
+			<xsd:element name="event-time" type="xsd:time"/>
+		</xsd:all>
+	</xsd:complexType>
+  <xsd:complexType name="orderMessageEventType">
+    <xsd:all>
+      <xsd:element name="event-id" type="eventIdType"/>
+      <xsd:element name="external-customer-reference" type="externalCustomerReferenceType" minOccurs="0"/>
+      <xsd:element name="external-requisition-no-reference" type="externalRequisitionNoReferenceType" minOccurs="0"/>
+      <xsd:element name="phone-no" type="phoneNoType"/>
+      <xsd:element name="phone-no-old" type="phoneNoType" minOccurs="0"/>
+      <xsd:element name="event-date" type="xsd:date"/>
+      <xsd:element name="event-time" type="xsd:time"/>
+      <xsd:element name="order-no" type="orderNoType"/>
+      <xsd:element name="order-message" type="orderMessageType"/>
+    </xsd:all>
+  </xsd:complexType>
+	<xsd:complexType name="eventStatusType">
+		<xsd:all>
+			<xsd:element name="unread-events" type="unreadEventsType"/>
+			<xsd:element name="date-of-first-event" type="xsd:date"/>
+			<xsd:element name="time-of-first-event" type="xsd:time"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="unreadEventsType">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="eventIdType">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 4, Installed Multi for 5 (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+     -->
+	<!--CuLinkAddress -->
+	<xsd:include schemaLocation="address.xsd"/>
+	<xsd:complexType name="culinkaddressType">
+		<xsd:annotation>
+			<xsd:documentation>1.0</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="address-key" type="addressKeyType"/>
+			<xsd:element name="door-no" type="doorNoType"/>
+			<xsd:element name="floor" type="floorType"/>
+			<xsd:element name="phone-id" type="phoneIdType"/>
+			<xsd:element name="phone-id-status" type="phoneIdStatusType"/>
+			<xsd:element name="former-user" type="formerUserType"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="phoneIdType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="phoneIdStatusType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="A"/>
+			<xsd:enumeration value="U"/>
+			<xsd:enumeration value="S"/>
+			<xsd:enumeration value="R"/>
+			<xsd:enumeration value="K"/>
+			<xsd:enumeration value="F"/>
+			<xsd:enumeration value="T"/>
+			<xsd:enumeration value="H"/>
+			<xsd:enumeration value="O"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="formerUserType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="77"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

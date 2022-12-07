@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Vikas Bhatt (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+  -->
+	<xsd:include schemaLocation="productparametertypelist.xsd"/>
+	<xsd:include schemaLocation="types.xsd"/>
+	<xsd:complexType name="productType">
+		<xsd:all>
+			<xsd:element name="product-id" type="productIdType" minOccurs="0"/>
+			<xsd:element name="name" type="productNameType" minOccurs="0"/>
+			<xsd:element name="descr" type="productDescrType" minOccurs="0"/>
+			<xsd:element name="sik-value" type="sikValueType" minOccurs="0"/>
+            <xsd:element name="number-of-copper-pair-required" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="pair-bonding-required" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="product-parameter-type-list" type="productParameterTypeListType" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="productIdType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="40"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="productNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="productDescrType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

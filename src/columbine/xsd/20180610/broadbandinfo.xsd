@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 4, Installed Multi for 5 (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- broadband-info -->
+	<xsd:complexType name="broadbandinfoType">
+		<xsd:annotation>
+			<xsd:documentation>5.6</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="broadband-type" type="broadbandTypeType"/>
+			<xsd:element name="releasable-capacity" type="releasableCapacityType"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="broadbandTypeType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="releasableCapacityType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+</xsd:schema>

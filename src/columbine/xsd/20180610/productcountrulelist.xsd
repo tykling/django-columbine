@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 4, Installed Multi for 5 (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+  -->
+	<xsd:include schemaLocation="product.xsd"/>
+	<xsd:include schemaLocation="productgrouplist.xsd"/>
+	<xsd:complexType name="productCountRuleListType">
+		<xsd:sequence>
+			<xsd:element name="rule-product-count-product" type="ruleProductCountProductType" maxOccurs="unbounded"/>
+			<xsd:element name="rule-product-count-group" type="ruleProductCountGroupType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ruleProductCountGroupType">
+		<xsd:all>
+			<xsd:element name="min-value" type="minValueType"/>
+			<xsd:element name="max-value" type="maxValueType"/>
+			<xsd:element name="product-group-id" type="productGroupIdType"/>
+			<xsd:element name="sik-value" type="sikValueType" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="ruleProductCountProductType">
+		<xsd:all>
+			<xsd:element name="min-value" type="minValueType"/>
+			<xsd:element name="max-value" type="maxValueType"/>
+			<xsd:element name="product-id" type="productIdType"/>
+			<xsd:element name="sik-value" type="sikValueType" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:simpleType name="minValueType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:totalDigits value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="maxValueType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:totalDigits value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

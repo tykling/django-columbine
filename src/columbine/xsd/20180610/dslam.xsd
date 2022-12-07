@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+  -->
+  <xsd:complexType name="dslamType">
+    <xsd:all>
+      <xsd:element name="adsl-isdn-supplier" type="supplierType" minOccurs="1"/>
+      <xsd:element name="adsl-pstn-supplier" type="supplierType" minOccurs="1"/>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:simpleType name="supplierType">
+    <xsd:restriction base="xsd:string">
+      <!--<xsd:length value="10"/>-->
+      <xsd:enumeration value="SIEMENS"/>
+      <xsd:enumeration value="ERICSSON"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

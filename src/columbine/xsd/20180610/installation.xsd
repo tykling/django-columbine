@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+  -->
+  <xsd:include schemaLocation="address.xsd"/>
+  <xsd:include schemaLocation="customer.xsd"/>
+
+  <xsd:complexType name="installationType">
+    <xsd:annotation>
+      <xsd:documentation>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element name="first-name" type="firstNameType" minOccurs="0"/>
+      <xsd:element name="last-name" type="lastNameType" minOccurs="0"/>
+      <xsd:element name="occupation" type="occupationType" minOccurs="0"/>
+      <xsd:element name="company-name" type="companyNameType" minOccurs="0"/>
+      <xsd:element name="address" type="addressType" minOccurs="0"/>
+    </xsd:all>
+  </xsd:complexType>
+
+</xsd:schema>

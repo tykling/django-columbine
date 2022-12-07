@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+  -->
+  <xsd:include schemaLocation="address.xsd"/>
+  <!-- ======== centralType ======== -->
+  <xsd:complexType name="centralType">
+    <xsd:annotation>
+      <xsd:documentation>
+       The central definition.
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:all>
+      <xsd:element name="central-name" type="centralNameType"/>
+      <xsd:element name="central-short-name" type="centralShortNameType"/>
+      <xsd:element name="central-area" type="centralAreaType" minOccurs="0"/>
+      <xsd:element name="central-type" type="centralTypeType" minOccurs="0"/>
+      <xsd:element name="atm-gw" type="atmGwType"/>
+      <xsd:element name="housing" type="housingType" minOccurs="0"/>
+      <xsd:element name="address" type="addressType"/>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:simpleType name="centralNameType">
+    <xsd:annotation>
+      <xsd:documentation>
+        centralname - max 20 chars and text
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="centralShortNameType">
+    <xsd:annotation>
+      <xsd:documentation>
+       centralshortname type max 4 chars and text
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="centralAreaType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="centralTypeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="primary"/>
+      <xsd:enumeration value="secondary"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+   
+  <xsd:simpleType name="atmGwType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:simpleType name="housingType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="60"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+</xsd:schema>

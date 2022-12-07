@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!-- subscription-info -->
+  <xsd:complexType name="subscriptionInfoType">
+    <xsd:annotation>
+      <xsd:documentation>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element name="subscription-type" type="subscriptionTypeType" minOccurs="1"/>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:simpleType name="subscriptionTypeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ISDN"/>
+      <xsd:enumeration value="PSTN"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

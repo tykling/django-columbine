@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Ib (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+      -->
+	<xsd:include schemaLocation="task.xsd"/>
+	<xsd:include schemaLocation="order.xsd"/>
+	<!-- Task list type -->
+	<xsd:complexType name="taskListType">
+		<xsd:annotation>
+			<xsd:documentation>
+             20061215: en task vil indeholde enten booked-date-special og execution-date-special
+             eller booked-date, booked-time-from, booked-time-to, execution-date og execution-time 
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="task" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="task-id" type="taskIdType" minOccurs="0"/>
+						<xsd:element name="task-name" type="taskNameType" minOccurs="0"/>
+						<xsd:element name="booked-date-special" type="specialType" minOccurs="0"/>
+						<xsd:element name="booked-date" type="xsd:date" minOccurs="0"/>
+						<xsd:element name="booked-time-from" type="xsd:time" minOccurs="0"/>
+						<xsd:element name="booked-time-to" type="xsd:time" minOccurs="0"/>
+						<xsd:element name="execution-date-special" type="specialType" minOccurs="0"/>
+						<xsd:element name="execution-date" type="xsd:date" minOccurs="0"/>
+						<xsd:element name="execution-time" type="xsd:time" minOccurs="0"/>
+                        <xsd:element name="task-reschedule-able" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="task-rescheduled" type="xsd:boolean" minOccurs="0"/>
+                        <xsd:element name="task-work-timeslot-list" type="worktimeslotListType" minOccurs="0"/>
+            <xsd:element name="additional-task-data-list" type="additionalTaskDataListType" minOccurs="0"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+  <xsd:complexType name="additionalTaskDataListType">
+    <xsd:sequence minOccurs="0">
+      <xsd:element name="additional-task-data" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

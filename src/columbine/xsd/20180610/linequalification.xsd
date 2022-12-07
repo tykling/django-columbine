@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!-- ======== lineQualificationType ======== -->
+  <xsd:complexType name="lineQualificationType">
+    <xsd:annotation>
+      <xsd:documentation>
+       The line-qualification definition.
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:all>
+      <xsd:element name="termination-node" type="terminationNodeType"/>
+      <xsd:element name="attenuation" type="attenuationType"/>
+    </xsd:all>
+  </xsd:complexType>
+
+  <xsd:simpleType name="terminationNodeType">
+    <xsd:annotation>
+      <xsd:documentation>
+        termination-node - max 250 chars and text,
+        either a name of a termination-node 
+        or an errormessage
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="250"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="attenuationType">
+    <xsd:annotation>
+      <xsd:documentation>
+       attenuation max 250 chars and text, 
+       either an attenuation which can be converted into a decimal   
+       or an errormessage
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="250"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+</xsd:schema>

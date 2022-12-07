@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by a71899 (TDC Cable TV) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!--  Copyright Ib Gregersen TCS Aps  -->
+	<!-- ======== NetinfoParameters ======== -->
+	<xsd:complexType name="netinfoParametersType">
+		<xsd:annotation>
+			<xsd:documentation>Input-parameters used to customize the reply from NetInfo</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="equipment-type" type="equipmentTypeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The types of equipment to retrieve information about</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="attenuations" type="attenuationSwitchType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Switch to retrieve attenuation information in reply</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="technologyOrPorts" type="techOrPortsSwitchType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Switch to retrieve techOrPortsValue information in reply</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="diy" type="diySwitchType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Switch to retrieve diy information in reply</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="availablePorts" type="availablePortsSwitchType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Switch to retrieve AvailablePorts information in reply</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="connectionPath" type="connectionPathSwitchType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Switch to retrieve ConnectionPath information in reply</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<!-- Added by Susmita:17638 Unified Visitation start -->
+			<xsd:element name="copperStopInfoRequired" type="copperStopInfoRequiredSwitchType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Switch to retrieve CopperStop information in reply</xsd:documentation>
+				</xsd:annotation>				
+			</xsd:element>
+			<!-- Added by Susmita:17638 Unified Visitation end -->			
+		</xsd:all>
+	</xsd:complexType>
+	<!-- These are defined separately to allow for different regexps -->
+	<xsd:simpleType name="attenuationSwitchType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="techOrPortsSwitchType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="equipmentTypeType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="diySwitchType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="availablePortsSwitchType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="connectionPathSwitchType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="copperStopInfoRequiredSwitchType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>	
+</xsd:schema>

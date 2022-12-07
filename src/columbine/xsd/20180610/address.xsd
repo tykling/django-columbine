@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Ib (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- This schema is not intended to be independent you need to include
+       types.xsd to use this. -->
+	<!--  <xsd:include schemaLocation="types.xsd"/> -->
+	<xsd:complexType name="addressType">
+		<xsd:annotation>
+			<xsd:documentation>5.9</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:sequence>
+					<xsd:element name="street-code" type="streetCodeType"/>
+					<xsd:element name="municipal-code" type="municipalCodeType"/>
+				</xsd:sequence>
+				<xsd:sequence>
+					<xsd:element name="street-name" type="streetNameType"/>
+					<xsd:element name="zip-code" type="zipCodeType"/>
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element name="house-no" type="houseNoType"/>
+			<xsd:element name="main-door" type="mainDoorType" minOccurs="0"/>
+			<xsd:element name="floor" type="floorType" minOccurs="0"/>
+			<xsd:element name="door-no" type="doorNoType" minOccurs="0"/>
+			<xsd:element name="city" type="cityType" minOccurs="0"/>
+			<xsd:element name="county" type="countyType" minOccurs="0"/>
+			<xsd:element name="country" type="countryType" minOccurs="0"/>
+			<xsd:element name="house-name" type="houseNameType" minOccurs="0"/>
+			<xsd:element name="externalInstallationId" type="externalInstallationIDType" minOccurs="0"/>
+			<xsd:element name="address-key" type="addressKeyType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="streetCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="municipalCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="streetNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="mainDoorType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="floorType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="doorNoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- houseNoType -->
+	<xsd:simpleType name="houseNoType">
+		<xsd:annotation>
+			<xsd:documentation>
+             House number, in case af 25a, the 'a' will be in mainDoor
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- zipCodeType -->
+	<xsd:simpleType name="zipCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Zipcode</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="([0-9]{4})?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="cityType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="30"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="countyType">
+		<xsd:annotation>
+			<xsd:documentation>Stednavn</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="30"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="countryType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="houseNameType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="15"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="externalInstallationIDType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- address-key (husnoegle) -->
+	<xsd:simpleType name="addressKeyType">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:totalDigits value="12"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

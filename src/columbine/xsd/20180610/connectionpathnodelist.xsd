@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:include schemaLocation="connectionpathnode.xsd"/>
+	<xsd:complexType name="connectionPathNodeList">
+		<xsd:sequence>
+			<xsd:element name="connectionPathNode" type="connectionPathNode" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Vikas Bhatt (CSC Denmark A/S) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:include schemaLocation="circuitlistitem.xsd"/>
+	<xsd:complexType name="circuitListType">
+		<xsd:sequence>
+			<xsd:element name="circuit-list-item" type="circuitListItemType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

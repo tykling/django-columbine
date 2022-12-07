@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+  <!--  Copyright Peter R. Brinkler TDC Internet
+        VALIDATING USING THIS WILL NOT PERFORM WELL AS ALL THE
+        RULES ARE SPECIFIED IN THE SAME NAMESPACE YOU SHOULD EXPECT
+        EXECUTION TIMES AROUND 5000 ms.
+        To make this perform you would be better served by splitting
+        up the content to only contain the rules pertaining to a specific
+        xml message.
+    -->
+  <!-- productChangeListType -->
+  <xsd:include schemaLocation="product.xsd"/>
+
+  <xsd:complexType name="productChangeListType">
+    <xsd:annotation>
+      <xsd:documentation>5.13.3</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="product-change" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="product-id" type="productIdType"/>
+            <xsd:element name="name" type="productNameType" minOccurs="0"/>
+            <xsd:element name="cu-prod-nr" type="cuProduktNummerType" minOccurs="0"/>
+            <xsd:element name="cu-prod-tr" type="cuProduktTranskodeType" minOccurs="0"/>
+            <xsd:element name="cu-prod-afs" type="cuProduktAfsaetType" minOccurs="0"/>
+            <xsd:element name="sik-value" type="sikValueType" minOccurs="0"/>
+            <xsd:element name="product-count" type="productCountType"/>
+            <xsd:element name="product-sequence" type="productSequenceType" minOccurs="0"/>
+            <xsd:element name="change-parameter-list" type="changeParameterListType" minOccurs="0"/> 
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <!-- change parameter list -->
+  <xsd:complexType name="changeParameterListType">
+    <xsd:annotation>
+      <xsd:documentation>5.13.4</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="change-parameter" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="name" type="changeNameType"/>
+            <xsd:element name="param-value" type="changeParameterValueType"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+<!-- LICA "product-parameter" er midlertidig 
+          pga. inkonsistens i definitions af <product-change>
+          i henholdsvis <command> og <reply>
+-->            
+      <xsd:element name="product-parameter" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:all>
+            <xsd:element name="name" type="changeNameType"/>
+            <xsd:element name="param-value" type="changeParameterValueType"/>
+          </xsd:all>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="productCountType">
+    <xsd:restriction base="xsd:integer">
+      <xsd:totalDigits value="1"/>
+     </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="productSequenceType">
+    <xsd:restriction base="xsd:nonNegativeInteger">
+      <xsd:totalDigits value="4"/>
+     </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="changeNameType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="255"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="changeParameterValueType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="255"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="cuProduktNummerType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="9"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="cuProduktTranskodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="3"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="cuProduktAfsaetType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="3"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>
